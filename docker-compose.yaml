@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  notes-api:
+    container_name: notes_api_service
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - PORT=3000
+    restart: unless-stopped
